@@ -67,11 +67,11 @@ $(document).ready(function () {
           forecast.append(`
             <div class="col-md-2 col-sm-4">
               <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                <div class="card-header">${moment(dayData.dt_txt).format('MM/DD/YYYY')}</div>
+                <div class="card-header">${moment(dayData.dt_txt).format('DD/MM/YYYY')}</div>
                 <div class="card-body">
                   <img src="https://openweathermap.org/img/wn/${dayData.weather[0].icon}.png" width="50" height="50" /><br>
-                  Temp: ${dayData.main.temp} °C<br>
-                  Humidity: ${dayData.main.humidity} %
+                  Temp: ${dayData.main.temp}°C<br>
+                  Humidity: ${dayData.main.humidity}%
                 </div>
               </div>
             </div>
@@ -94,10 +94,15 @@ $(document).ready(function () {
           });
       }
       
-      
       searchForm.on('submit', function (event) {
         event.preventDefault();
         const cityName = searchInput.val();
         updateHistoryList(cityName);
         getAndDisplayWeather(cityName);
       });
+
+      historyList.on('click', 'button.city-history', function (event) {
+        const cityName = $(this).text();
+        getAndDisplayWeather(cityName);
+      });
+});
