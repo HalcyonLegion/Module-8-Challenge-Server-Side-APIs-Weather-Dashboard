@@ -27,3 +27,11 @@ $(document).ready(function () {
     function fetchWeather(lat, lon) {
         const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
     
+        return new Promise((resolve, reject) => {
+            $.get(url, (data) => {
+              resolve(data);
+            }).fail((error) => {
+              reject(error);
+            });
+          });
+        }
