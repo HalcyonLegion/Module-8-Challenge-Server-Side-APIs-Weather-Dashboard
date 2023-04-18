@@ -44,4 +44,14 @@ $(document).ready(function () {
     //Function to convert the temperature to celcius
     function kelvinToCelsius(tempInKelvin) {
         return (tempInKelvin - 273.15).toFixed(2);
-      }
+    }
+    
+    // Another function to display today's weather  
+    function displayTodayWeather(data) {
+    today.html(`
+      <h2>${data.city.name} (${moment().format('MM/DD/YYYY')}) <img src="https://openweathermap.org/img/wn/${data.list[0].weather[0].icon}.png" width="50" height="50" /></h2>
+      <p>Temperature : ${data.list[0].main.temp} °C</p>
+      <p>Humidity : ${data.list[0].main.humidity} %</p>
+      <p>Wind Speed : ${data.list[0].wind.speed} meter/sec</p>
+    `);
+    }
