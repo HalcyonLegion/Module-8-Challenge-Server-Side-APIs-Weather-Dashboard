@@ -49,9 +49,9 @@ $(document).ready(function () {
     // Another function to display today's weather  
     function displayTodayWeather(data) {
     today.html(`
-      <h2>${data.city.name} (${moment().format('MM/DD/YYYY')}) <img src="https://openweathermap.org/img/wn/${data.list[0].weather[0].icon}.png" width="50" height="50" /></h2>
-      <p>Temperature : ${data.list[0].main.temp} °C</p>
-      <p>Humidity : ${data.list[0].main.humidity} %</p>
+      <h2>${data.city.name} (${moment().format('DD/MM/YYYY')}) <img src="https://openweathermap.org/img/wn/${data.list[0].weather[0].icon}.png" width="50" height="50" /></h2>
+      <p>Temperature : ${data.list[0].main.temp}°C</p>
+      <p>Humidity : ${data.list[0].main.humidity}%</p>
       <p>Wind Speed : ${data.list[0].wind.speed} meter/sec</p>
     `);
     today.css('border', '1px solid #000');
@@ -63,6 +63,9 @@ $(document).ready(function () {
     function displayForecastWeather(data) {
         forecast.html('');
     
+        // last touch here to show the h3 when a search has been conducted
+        $('#forecast-title').removeClass('d-none');
+
         for (let i = 0; i <= 5; i++) {
           const dayData = data.list[i * 8];
           forecast.append(`
