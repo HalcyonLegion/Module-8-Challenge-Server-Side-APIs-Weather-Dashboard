@@ -62,7 +62,7 @@ $(document).ready(function () {
     function displayForecastWeather(data) {
         forecast.html('');
     
-        for (let i = 1; i <= 5; i++) {
+        for (let i = 0; i <= 5; i++) {
           const dayData = data.list[i * 8];
           forecast.append(`
             <div class="col-md-2 col-sm-4">
@@ -71,6 +71,7 @@ $(document).ready(function () {
                 <div class="card-body">
                   <img src="https://openweathermap.org/img/wn/${dayData.weather[0].icon}.png" width="50" height="50" /><br>
                   Temp: ${dayData.main.temp}°C<br>
+                  Wind Speed: ${dayData.wind.speed} meter/sec<br>
                   Humidity: ${dayData.main.humidity}%
                 </div>
               </div>
