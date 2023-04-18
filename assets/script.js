@@ -35,3 +35,13 @@ $(document).ready(function () {
             });
           });
         }
+    
+    // Function to update the history list with the name of the city.
+    function updateHistoryList(cityName) {
+        historyList.append(`<button class="list-group-item city-history">${cityName}</button>`);
+    }
+
+    //Function to convert the temperature to celcius
+    function kelvinToCelsius(tempInKelvin) {
+        return (tempInKelvin - 273.15).toFixed(2);
+      }
