@@ -11,3 +11,19 @@ $(document).ready(function () {
     // Get coordinates of a city from OpenWeatherMap, load the URL
     function fetchCoordinates(city) {
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+    
+        // Async handling using Promise with 2 params - resolve for success, reject for failure.
+
+        return new Promise((resolve, reject) => {
+            $.get(url, (data) => {
+              resolve(data);
+            }).fail((error) => {
+              reject(error);
+            });
+          });
+        }
+    
+    // Gets the weather information based on the coordinates from earlier
+    function fetchWeather(lat, lon) {
+        const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    
