@@ -55,3 +55,26 @@ $(document).ready(function () {
       <p>Wind Speed : ${data.list[0].wind.speed} meter/sec</p>
     `);
     }
+
+
+    // Function for the Forecast data
+
+    function displayForecastWeather(data) {
+        forecast.html('');
+    
+        for (let i = 1; i <= 5; i++) {
+          const dayData = data.list[i * 8];
+          forecast.append(`
+            <div class="col-md-2 col-sm-4">
+              <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">${moment(dayData.dt_txt).format('MM/DD/YYYY')}</div>
+                <div class="card-body">
+                  <img src="https://openweathermap.org/img/wn/${dayData.weather[0].icon}.png" width="50" height="50" /><br>
+                  Temp: ${dayData.main.temp} °C<br>
+                  Humidity: ${dayData.main.humidity} %
+                </div>
+              </div>
+            </div>
+          `);
+        }
+        }
