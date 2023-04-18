@@ -54,6 +54,7 @@ $(document).ready(function () {
       <p>Humidity : ${data.list[0].main.humidity} %</p>
       <p>Wind Speed : ${data.list[0].wind.speed} meter/sec</p>
     `);
+    today.css('border', '1px solid #000');
     }
 
 
