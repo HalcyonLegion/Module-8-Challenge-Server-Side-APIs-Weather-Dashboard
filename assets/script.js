@@ -7,3 +7,7 @@ $(document).ready(function () {
     const searchInput = $('#search-input');
     const today = $('#today');
     const forecast = $('#forecast');
+
+    // Get coordinates of a city from OpenWeatherMap, load the URL
+    function fetchCoordinates(city) {
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
