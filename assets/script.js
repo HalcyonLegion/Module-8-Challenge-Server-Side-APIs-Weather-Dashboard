@@ -78,3 +78,26 @@ $(document).ready(function () {
           `);
         }
     }
+
+    //function here to display the weather based on the parts queried earlier
+    function getAndDisplayWeather(cityName) {
+        fetchCoordinates(cityName)
+          .then(({ coord }) => {
+            return fetchWeather(coord.lat, coord.lon);
+          })
+          .then((data) => {
+            displayTodayWeather(data);
+            displayForecastWeather(data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+      
+      
+      searchForm.on('submit', function (event) {
+        event.preventDefault();
+        const cityName = searchInput.val();
+        updateHistoryList(cityName);
+        getAndDisplayWeather(cityName);
+      });
